@@ -42,6 +42,7 @@ if (empty($_POST) or empty($_POST['key'])) {
     echo "Es ist ein Fehler aufgetreten. Mehr Details stehen leider nicht zur Verfügung.";
   }
 }
-  
+
+echo "<hr><small>Bei problemen	mit dem	Formular bitte eine mail an arnim(at)posteo(Punkt)de</small><p>";
 echo "</body></html>";
 ?>

@@ -27,6 +27,10 @@ if(empty($_POST)) {
     $checkOK = false;
   } else {$name = test_input($_POST["name"]);}
 
+  if (preg_match("/[\s\#\$\%\&]/", $_POST["name"])) {
+    $nameErr = errortext("* Der Name darf keine Whitespace-Zeichen (wie z.B. Leerzeichen) oder # enthalten.");
+    $checkOK = false;
+  }
 
   if (empty($_POST["firstname"])) {
     $firstnameErr = errortext("* Vorname wird benötigt.");
@@ -96,6 +100,7 @@ if ($checkOK == false or empty($_POST['submit']) or $_POST['submit'] == "OK" ) {
 } 
 
 
+echo "<hr><small>Bei problemen mit dem Formular bitte eine mail an arnim(at)posteo(Punkt)de</small><P>";
 echo "</body></html>";
 
 
