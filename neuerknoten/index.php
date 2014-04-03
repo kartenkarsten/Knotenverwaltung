@@ -70,7 +70,7 @@ if ($checkOK == false or empty($_POST['submit']) or $_POST['submit'] == "OK" ) {
   }
   echo "<table>";
   echo "<form action='index.php' method='post'>
-    <tr><td>Name des Knotens (wie auf der Konfigurationsseite angegeben!):</td><td><input type='text' size='35' name='name' value='", $name, "' /></td><td>", $nameErr ,"</td></tr>
+    <tr><td>Name des Knotens:</td><td><input type='text' size='35' name='name' value='", $name, "' /> (selbst gewählt oder die Vorgabe der Konfigurationsseite. Aber bitte ohne Leerzeichen und #)</td><td>", $nameErr ,"</td></tr>
     <tr><td>Vorname:</td><td><input type='text' size='20' name='firstname' value='", $firstname, "' /></td><td>", $firstnameErr, "</td></tr>
     <tr><td>Nachname:</td><td><input type='text' size='20' name='lastname' value='", $lastname, "' /></td><td>", $lastnameErr, "</td></tr>
     <tr><td>E-Mail:</td><td><input type='text' size='40' name='mail' value='", $mail, "' /></td><td>", $mailErr,"</td></tr>
