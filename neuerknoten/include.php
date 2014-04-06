@@ -28,12 +28,15 @@ function errortext($in) {
 function fastd_key_exists($key, $name) {
 
   $result = 0;
-  if (get_node_by_key($key) != "")
+  if (get_node_by_key($key) != "") 
     $result = 1;
-  if (get_node_by_name($name) != "")
-    $result = 1;
+
+  if (get_node_by_name($name) != "") 
+     $result = 1;
+
   return $result;
 }
+
 
 function get_node_by_key($key) {
 
@@ -127,25 +130,38 @@ function write_key($data) {
 
 
 function update_key($data) {
-  try {
-    $dbfile = $GLOBALS['DB'];
-    $dir = 'sqlite:/'.$dbfile;
-    $dbh  = new PDO($dir) or die("cannot open the database");
+	 $ok = 0;
+	 $tmp = get_node_by_name($data['name']);
+
+	 if (!empty($tmp) and $tmp['knoten_id'] == $data['knoten_id'])
+	    $ok = 1;
+         else 
+	    $ok = 0;
+
+	 if ($ok == 1) {
+	   try {
+	       $dbfile = $GLOBALS['DB'];
+	       $dir = 'sqlite:/'.$dbfile;
+	       $dbh  = new PDO($dir) or die("cannot open the database");
     
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $dbh->beginTransaction();
-    $query = "UPDATE knoten SET name='$data[name]', firstname='$data[firstname]', lastname='$data[lastname]', email='$data[email]', location='$data[location]', edit=1 WHERE knoten_id=$data[knoten_id]";
-    $dbh->exec($query);
-    $dbh->commit();
-    $dbh = NULL;
-    return 1;
-  } catch (Exception $e) {
-    $dbh->rollBack();
-    echo "Failed: " . $e->getMessage();
-    return 0;
-  }
-  return 0;
+               $dbh->beginTransaction();
+               $query = "UPDATE knoten SET name='$data[name]', firstname='$data[firstname]', lastname='$data[lastname]', email='$data[email]', location='$data[location]', edit=1 WHERE knoten_id=$data[knoten_id]";
+               $dbh->exec($query);
+               $dbh->commit();
+               $dbh = NULL;
+               return 1;
+               } 
+          catch (Exception $e) {
+               $dbh->rollBack();
+               echo "Failed: " . $e->getMessage();
+               return 0;
+	     }
+	 } else {
+	     echo "Fehler! Der Name oder der Key existieren schon!<p>";
+	     return 0;
+	 }
 }
 
 

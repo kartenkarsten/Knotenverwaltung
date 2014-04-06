@@ -23,7 +23,7 @@ if (empty($_POST) or empty($_POST['key'])) {
 
   echo "<table>";
   echo "<form action='edit2.php' method='post'>
-  <tr><td>Name des Knotens:</td><td>", $data['name'], "</td></tr>
+  <tr><td>Name des Knotens:</td><td><input type='text' size='35' name='name' value='", $data['name'], "'/></td></tr>
   <tr><td>Vorname:</td><td><input type='text' size='20' name='firstname' value='", $data['firstname'], "' /></td><td></tr>
   <tr><td>Nachname:</td><td><input type='text' size='20' name='lastname' value='", $data['lastname'], "' /></td><td></tr>
   <tr><td>E-Mail:</td><td><input type='text' size='40' name='email' value='", $data['email'], "' /></td><td></tr>
@@ -31,7 +31,6 @@ if (empty($_POST) or empty($_POST['key'])) {
   <tr><td>Standort des Knotens:</td><td><input type='text' size='65' name='location' value='", $data['location'], "' /></td></tr>
   <tr><td><input type='submit' name='submit' value='Änderungen speichern' /></td><td>", errortext("Achtung: Es gibt keine weiter Nachfrage. Die Daten werden so geschrieben."), "</td></tr>
   <input type='hidden' name='key' value='", $data['key'], "'>
-  <input type='hidden' name='name' value='", $data['name'], "'>
   <input type='hidden' name='knoten_id' value='", $data['knoten_id'], "'>
   </form></table>";
 } elseif ($_POST['submit'] == "Änderungen speichern") {
