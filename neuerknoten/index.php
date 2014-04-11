@@ -75,7 +75,7 @@ if ($checkOK == false or empty($_POST['submit']) or $_POST['submit'] == "OK" ) {
     <tr><td>Nachname:</td><td><input type='text' size='20' name='lastname' value='", $lastname, "' /></td><td>", $lastnameErr, "</td></tr>
     <tr><td>E-Mail:</td><td><input type='text' size='40' name='mail' value='", $mail, "' /></td><td>", $mailErr,"</td></tr>
     <tr><td>Router Schlüssel:</td><td><input type='text' size='65' name='key' value='", $key, "' /></td><td>", $keyErr, "</td></tr>
-    <tr><td>Standort des Knotens:</td><td><input type='text' size='65' name='location' value='", $location, "' /></td><td>", $locationErr ,"</td></tr>
+    <tr><td>Standort des Knotens:</td><td><input type='text' size='65' name='location' value='", $location, "' /> (z.B. Straße und Ort. Die GPS-Daten werden nur auf dem Knoten selber eingetragen.)</td><td>", $locationErr ,"</td></tr>
     <tr><td><input type='submit' name='submit' value='", $button, "' /></td></tr>
     </form></table>";
   
