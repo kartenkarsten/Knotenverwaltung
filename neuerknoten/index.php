@@ -10,7 +10,7 @@ $firname = $lastname = $mail = $key = $location = $name = "";
 $checkOK = true;
 
 echo "<html><head><title>Freifunk Lueneburg</title></head><body>";
-echo "<img src='ff_lg_web.png'><hr><p>";
+echo "<a href='index.php'><img src='ff_lg_web.png'></a><hr><p>";
 
 if(empty($_POST)) {
   echo "<h2>Willkommen beim Freifunk Lüneburg!</h2>";
@@ -27,7 +27,7 @@ if(empty($_POST)) {
     $checkOK = false;
   } else {$name = test_input($_POST["name"]);}
 
-  if (preg_match("/[\s\#\$\%\&]/", $_POST["name"])) {
+  if (preg_match("/[\#\$\%\&]/", $_POST["name"]) or strpos($_POST["name"], " ") != false) {
     $nameErr = errortext("* Der Name darf keine Whitespace-Zeichen (wie z.B. Leerzeichen) oder # enthalten.");
     $checkOK = false;
   }
@@ -100,8 +100,5 @@ if ($checkOK == false or empty($_POST['submit']) or $_POST['submit'] == "OK" ) {
 } 
 
 
-echo "<hr><small>Bei problemen mit dem Formular bitte eine mail an arnim(at)posteo(Punkt)de</small><P>";
-echo "</body></html>";
-
-
+foot();
 ?>
