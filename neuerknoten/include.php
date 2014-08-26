@@ -96,7 +96,6 @@ function get_node_by_key($key) {
   $tmp = "";
   
 
-  debug("AUFRUF");
   try {
     $dbh  = new PDO($dir) or die("cannot open the database");
     $query = "SELECT * FROM knoten WHERE key = '$key'";

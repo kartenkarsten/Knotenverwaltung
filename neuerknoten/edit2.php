@@ -20,6 +20,11 @@ if (empty($_POST) or empty($_POST['key'])) {
 } elseif ($_POST['submit'] == "OK" and !empty($_POST['key'])) {
   
   $data = get_node_by_key(htmlspecialchars($_POST['key']));
+  if (empty($data['knoten_id'])) {
+     echo "Leider konnte dem eingegebenen key kein Knoten zugeordnet werden.<p>";
+     echo "Unter <a href='https://freifunk-lueneburg.de/neuerknoten/meine_knoten.php'>diesem link</a> kannst Du eine List der auf Dich registrierten Knoten anfordern.<p>";
+     exit;
+  }
 
   echo "<table>";
   echo "<form action='edit2.php' method='post'>
